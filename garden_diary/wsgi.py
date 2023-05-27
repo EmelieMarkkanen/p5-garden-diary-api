@@ -1,5 +1,5 @@
 """
-WSGI config for garden_diary project.
+WSGI config for drf_api project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
