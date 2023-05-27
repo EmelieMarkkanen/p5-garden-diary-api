@@ -19,19 +19,9 @@ class ShoppingListDetailedView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
 
 
-class ShoppingListCreateItemView(generics.CreateAPIView):
-    queryset = ShoppingListItem.objects.all()
-    serializer_class = ShoppingListItemSerializer
-    permission_classes = [IsOwnerOrReadOnly]
-
-    def perform_create(self, serializer):
-        shopping_list_id = self.kwargs.get('list_id')
-        shopping_list = get_object_or_404(ShoppingList, id=shopping_list_id)
-        serializer.save(owner=self.request.user, shopping_list=shopping_list)
-
-
 class ShoppingListItemDetailedView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ShoppingListItemSerializer
+    permission_classes = [IsOwnerOrReadOnly]
 
     def get_queryset(self):
         shopping_list_id = self.kwargs['list_id']
