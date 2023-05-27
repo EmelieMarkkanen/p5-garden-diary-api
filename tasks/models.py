@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Task(models.Model):
+    """
+    Task model, owner relates to the user model, used to 
+    associate each task with a specific user.
+    Set created at and updated at date, task can be set as over due.
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

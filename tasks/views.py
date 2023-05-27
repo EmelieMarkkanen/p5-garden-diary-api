@@ -4,6 +4,9 @@ from .serializers import TaskSerializer
 from garden_diary.permissions import IsOwnerOrReadOnly
 
 class TaskListView(generics.ListCreateAPIView):
+    """
+    List all tasks.
+    """
     serializer_class = TaskSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
@@ -16,6 +19,9 @@ class TaskListView(generics.ListCreateAPIView):
 
 
 class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve a task, owner can edit och delete task. 
+    """
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = [IsOwnerOrReadOnly]
