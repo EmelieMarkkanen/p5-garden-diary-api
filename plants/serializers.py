@@ -10,4 +10,3 @@ class PlantsDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plants
         fields = ['id', 'name', 'type', 'planted', 'perennial', 'care_instructions', 'created_at', 'updated_at', 'image']
-        read_only_fields = ['id', 'created_at', 'updated_at']
