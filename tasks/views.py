@@ -2,6 +2,7 @@ from rest_framework import generics
 from .models import Task
 from .serializers import TaskSerializer, TaskDetailSerializer
 from garden_diary.permissions import IsOwnerOrReadOnly
+from django.shortcuts import get_object_or_404
 
 class TaskListView(generics.ListCreateAPIView):
     """

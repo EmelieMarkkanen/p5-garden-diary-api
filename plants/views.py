@@ -2,6 +2,7 @@ from rest_framework import generics
 from .models import Plants
 from .serializers import PlantsSerializer, PlantsDetailSerializer
 from garden_diary.permissions import IsOwnerOrReadOnly
+from django.shortcuts import get_object_or_404
 
 class PlantsListView(generics.ListCreateAPIView):
     queryset = Plants.objects.all()
