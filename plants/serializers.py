@@ -4,6 +4,10 @@ from .models import Plants
 class PlantsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plants
-        fields = ['id', 'name', 'type',
-        'care_instructions', 'created_at',
-        'updated_at', 'planted', 'perennial', 'image']
+        fields = ['id', 'name', 'type', 'planted', 'perennial', 'care_instructions', 'created_at', 'updated_at', 'image']
+
+class PlantsDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plants
+        fields = ['id', 'name', 'type', 'planted', 'perennial', 'care_instructions', 'created_at', 'updated_at', 'image']
+        read_only_fields = ['id', 'created_at', 'updated_at']
