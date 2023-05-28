@@ -7,6 +7,7 @@ class TaskListView(generics.ListCreateAPIView):
     """
     List all tasks.
     """
+    queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
