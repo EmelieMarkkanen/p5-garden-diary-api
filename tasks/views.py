@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .models import Task
-from .serializers import TaskSerializer
+from .serializers import TaskSerializer, TaskDetailSerializer
 from garden_diary.permissions import IsOwnerOrReadOnly
 
 class TaskListView(generics.ListCreateAPIView):
@@ -20,7 +20,7 @@ class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
     Retrieve a task, owner can edit och delete task. 
     """
     queryset = Task.objects.all()
-    serializer_class = TaskSerializer
+    serializer_class = TaskDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
     def get_queryset(self):

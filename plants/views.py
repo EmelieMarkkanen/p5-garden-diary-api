@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .models import Plants
-from .serializers import PlantsSerializer
+from .serializers import PlantsSerializer, PlantsDetailSerializer
 from garden_diary.permissions import IsOwnerOrReadOnly
 
 class PlantsListView(generics.ListCreateAPIView):
@@ -14,7 +14,7 @@ class PlantsListView(generics.ListCreateAPIView):
 
 class PlantsDetailedView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Plants.objects.all()
-    serializer_class = PlantsSerializer
+    serializer_class = PlantsDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
     def get_queryset(self):
