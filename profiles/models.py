@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+from django.core.files.base import ContentFile
 
 
 class Profile(models.Model):
@@ -25,7 +26,10 @@ def create_profile(sender, instance, created, **kwargs):
     if created:
         profile = Profile.objects.create(owner=instance)
         if instance.profileImage:
-            profile.image = instance.profileImage
-            profile.save()
+            profile.image.save(
+                instance.profileImage.name,
+                ContentFile(instance.profileImage.read()),
+            )
+        profile.save()
 
 post_save.connect(create_profile, sender=User)
