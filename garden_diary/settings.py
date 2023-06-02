@@ -70,9 +70,9 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-emeliemarkk-p5gardendia-d8gyeqgte7u.ws-eu98.gitpod.io',
-    'localhost', 'https://garden-diary-api.herokuapp.com/'
+    'localhost', 
+    os.environ.get('ALLOWED_HOST'),
 ]
-
 
 # Application definition
 
