@@ -69,8 +69,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-   os.environ.get('ALLOWED_HOST'),
-   'localhost',
+    '8000-emeliemarkk-p5gardendia-d8gyeqgte7u.ws-eu98.gitpod.io',
+    'localhost', 'https://garden-diary-api.herokuapp.com/'
 ]
 
 
@@ -118,6 +118,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
@@ -129,6 +134,7 @@ else:
     ]
 
 CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = 'garden_diary.urls'
 

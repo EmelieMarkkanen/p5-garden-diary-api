@@ -11,7 +11,7 @@ class Profile(models.Model):
     country = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_hhk0wb'
+        upload_to='images/', default='../default_profile_image'
     )
 
     class Meta:
