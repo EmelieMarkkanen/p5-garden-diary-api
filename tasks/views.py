@@ -1,6 +1,6 @@
-from rest_framework import generics, status
-from .models import Plants
-from .serializers import PlantsSerializer, PlantsDetailSerializer
+from rest_framework import generics
+from .models import Task
+from .serializers import TaskSerializer, TaskDetailSerializer
 from garden_diary.permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
@@ -18,7 +18,7 @@ class TaskListView(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class TasksDetailedView(generics.RetrieveUpdateDestroyAPIView):
+class TaskDetailedView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TaskDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]
 

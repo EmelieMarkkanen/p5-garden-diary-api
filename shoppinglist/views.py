@@ -1,7 +1,7 @@
 from rest_framework import generics
 from .models import ShoppingList, ShoppingListItem
 from .serializers import ShoppingListSerializer, ShoppingListItemSerializer
-from garden_diary.permissions import IsOwnerOrReadOnly
+from garden_diary.permissions import IsOwnerOrReadOnly, IsOwnerOfList, IsOwnerOfListItem
 from django.shortcuts import get_object_or_404
 
 class ShoppingListView(generics.ListCreateAPIView):
@@ -16,12 +16,12 @@ class ShoppingListView(generics.ListCreateAPIView):
 class ShoppingListDetailedView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ShoppingList.objects.all()
     serializer_class = ShoppingListSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOfList]
 
 
 class ShoppingListItemDetailedView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ShoppingListItemSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsOwnerOfListItem]
 
     def get_queryset(self):
         shopping_list_id = self.kwargs['list_id']
