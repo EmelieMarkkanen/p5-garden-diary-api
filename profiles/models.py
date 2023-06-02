@@ -23,6 +23,9 @@ class Profile(models.Model):
 
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(owner=instance)
+        profile = Profile.objects.create(owner=instance)
+        if instance.profileImage:
+            profile.image = instance.profileImage
+            profile.save()
 
 post_save.connect(create_profile, sender=User)
