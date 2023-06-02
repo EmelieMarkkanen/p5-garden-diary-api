@@ -11,7 +11,6 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=255, blank=True)
-    country = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
     image = models.ImageField(upload_to='images/', default='../default_profile_c36wy0')
 
@@ -27,7 +26,8 @@ def create_profile(sender, instance, created, **kwargs):
     if created:
         profile = Profile.objects.create(owner=instance)
         if instance.profileImage:
-            profile.image.delete()
+            if profile.image.name != '../default_profile_c36wy0': 
+                profile.image.delete()
             profile.image.save(
                 instance.profileImage.name,
                 instance.profileImage,
