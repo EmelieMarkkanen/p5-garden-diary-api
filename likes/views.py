@@ -2,6 +2,7 @@ from rest_framework import generics, permissions
 from garden_diary.permissions import IsOwnerOrReadOnly
 from likes.models import Like
 from likes.serializers import LikeSerializer
+from django.db.models import Count
 
 
 class LikeList(generics.ListCreateAPIView):
