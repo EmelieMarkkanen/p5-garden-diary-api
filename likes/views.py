@@ -2,8 +2,6 @@ from rest_framework import generics, permissions
 from garden_diary.permissions import IsOwnerOrReadOnly
 from likes.models import Like
 from likes.serializers import LikeSerializer
-from django.db.models import Count
-
 
 class LikeList(generics.ListCreateAPIView):
     """
@@ -15,11 +13,6 @@ class LikeList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-        
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        queryset = queryset.annotate(likes_count=Count('post__likes'))
-        return queryset
 
 
 class LikeDetail(generics.RetrieveDestroyAPIView):
