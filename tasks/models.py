@@ -14,7 +14,9 @@ class Task(models.Model):
     content = models.TextField(max_length=600, blank=True)
     due_date = models.DateField(null=True, blank=True)
     overdue = models.BooleanField(default=False)
-
+    image = models.ImageField(
+        upload_to='images/', default='../default_upload_wck8zz', blank=True
+    )
     class Meta:
         ordering = ['-created_at']
 
