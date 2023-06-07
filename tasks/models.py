@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.db.models import F
 
 class Task(models.Model):
     """
@@ -19,7 +20,7 @@ class Task(models.Model):
         upload_to='images/', default='../default_upload_wck8zz', blank=True
     )
     class Meta:
-        ordering = ['-created_at']
+        ordering = [F('due_date').asc(nulls_last=True)]
 
     def __str__(self):
         return f'{self.id} {self.title}'
