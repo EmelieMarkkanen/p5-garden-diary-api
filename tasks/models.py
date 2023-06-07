@@ -28,5 +28,7 @@ class Task(models.Model):
         return self.due_date and self.due_date < timezone.now().date()
     
     def save(self, *args, **kwargs):
+        if not self.image:
+            self.image = '../default_upload_wck8zz'
         self.overdue = self.is_overdue()
         super().save(*args, **kwargs)
