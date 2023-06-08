@@ -1,25 +1,19 @@
-from rest_framework import generics, status
+from rest_framework import generics
 from .models import ShoppingList, ShoppingListItem
-from .serializers import ShoppingListSerializer, ItemSerializer, ShoppingListDetailSerializer
-from garden_diary.permissions import IsOwnerOrReadOnly, IsOwnerOfList, IsOwnerOfListItem
-from django.shortcuts import get_object_or_404
-from rest_framework.response import Response
-
+from .serializers import ShoppingListSerializer, ShoppingListItemSerializer
+from garden_diary.permissions import IsOwnerOrReadOnly
 
 class ShoppingListView(generics.ListCreateAPIView):
     queryset = ShoppingList.objects.all()
     serializer_class = ShoppingListSerializer
-    permission_classes = [IsOwnerOrReadOnly, IsOwnerOfList]
+    permissions = [IsOwnerOrReadOnly]
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-        
-
-class ShoppingListDetailedView(generics.RetrieveAPIView):
+class ShoppingListDetailedView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ShoppingList.objects.all()
-    serializer_class = ShoppingListDetailSerializer
+    serializer_class = ShoppingListSerializer
+    permissions = [IsOwnerOrReadOnly]
 
-class ItemView(generics.RetrieveUpdateDestroyAPIView):
+class ShoppingListItemView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ShoppingListItem.objects.all()
-    serializer_class = ItemSerializer
-    permission_classes = [IsOwnerOrReadOnly, IsOwnerOfListItem]
+    serializer_class = ShoppingListItemSerializer
+    permissions = [IsOwnerOrReadOnly]
