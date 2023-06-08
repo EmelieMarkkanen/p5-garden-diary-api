@@ -9,7 +9,7 @@ class ShoppingListItemSerializer(serializers.ModelSerializer):
         fields = ['id', 'shopping_list', 'owner', 'name', 'quantity']
 
 class ShoppingListSerializer(serializers.ModelSerializer):
-    items = ShoppingListItemSerializer(many=True, read_only=True)
+    items = ShoppingListItemSerializer(many=True, read_only=True, source='shoppinglistitem_set')
 
     class Meta:
         model = ShoppingList
