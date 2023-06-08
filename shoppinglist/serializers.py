@@ -7,10 +7,9 @@ class ShoppingListItemSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'quantity')
 
 class ShoppingListSerializer(serializers.ModelSerializer):
-    items = ShoppingListItemSerializer(many=True)
 
     class Meta:
         model = ShoppingList
-        fields = ('id', 'owner', 'title', 'created_at', 'updated_at', 'items')
+        fields = ('id', 'owner', 'title', 'created_at', 'updated_at')
 
 
