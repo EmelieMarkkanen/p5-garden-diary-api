@@ -7,10 +7,14 @@ class ShoppingListItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShoppingListItem
         fields = ['id', 'shopping_list', 'owner', 'name', 'quantity']
+        
 
 class ShoppingListSerializer(serializers.ModelSerializer):
-    items = ShoppingListItemSerializer(many=True, read_only=True)
+    items_count = serializers.SerializerMethodField()
+
+    def get_items_count(self, obj):
+        return obj.items.count()
 
     class Meta:
         model = ShoppingList
-        fields = ['id', 'title', 'items', 'created_at', 'updated_at']
+        fields = ['id', 'title', 'items_count', 'created_at', 'updated_at']
