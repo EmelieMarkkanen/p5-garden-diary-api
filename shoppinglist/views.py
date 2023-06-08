@@ -5,7 +5,7 @@ from garden_diary.permissions import IsOwnerOrReadOnly, IsOwnerOfList, IsOwnerOf
 from django.shortcuts import get_object_or_404
 
 class ShoppingListView(generics.ListCreateAPIView):
-    queryset = ShoppingList.objects.all()
+    queryset = ShoppingList.objects.all().prefetch_related('items')
     serializer_class = ShoppingListSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
