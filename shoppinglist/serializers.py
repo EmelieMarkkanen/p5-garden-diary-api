@@ -21,3 +21,9 @@ class ShoppingListDetailSerializer(serializers.ModelSerializer):
         model = ShoppingList
         fields = ('id', 'owner', 'title', 'created_at', 'updated_at', 'items')
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        items = instance.items.all()
+        data['items'] = ItemSerializer(items, many=True).data
+        return data
+
