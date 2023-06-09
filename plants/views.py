@@ -7,21 +7,15 @@ from rest_framework.response import Response
 
 
 class PlantsListView(generics.ListCreateAPIView):
+    queryset = Plants.objects.all()
     serializer_class = PlantsSerializer
     permission_classes = [IsOwnerOrReadOnly]
-
-    def get_queryset(self):
-        user = self.request.user
-        return Plants.objects.filter(owner=user)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 
 class PlantsDetailedView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Plants.objects.all()
     serializer_class = PlantsDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]
-
-    def get_queryset(self):
-        user = self.request.user
-        return Plants.objects.filter(owner=user)
