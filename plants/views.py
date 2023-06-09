@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 
 
 class PlantsListView(generics.ListCreateAPIView):
+    """View for listing and creating a plant post"""
     queryset = Plants.objects.all()
     serializer_class = PlantsSerializer
     permission_classes = [IsOwnerOrReadOnly]
@@ -16,6 +17,7 @@ class PlantsListView(generics.ListCreateAPIView):
 
 
 class PlantsDetailedView(generics.RetrieveUpdateDestroyAPIView):
+    """View for retrieving, updating, and deleting a plant post."""
     queryset = Plants.objects.all()
     serializer_class = PlantsDetailSerializer
     permission_classes = [IsOwnerOrReadOnly]

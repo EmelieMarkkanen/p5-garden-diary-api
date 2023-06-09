@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Plants(models.Model):
+    """Model representing a plant, owner relates to the user model, used to 
+    associate each task with a specific user.
+    Model includes a list of plant type choices. 
+    """
     
     plant_type_choices = [
         ('unknown', 'Unknown'),
