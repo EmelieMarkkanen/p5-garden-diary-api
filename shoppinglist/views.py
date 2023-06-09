@@ -14,6 +14,7 @@ class ItemListView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
 class ItemDetailedView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Item.objects.all()
     serializer_class =ItemDetailSerializer
