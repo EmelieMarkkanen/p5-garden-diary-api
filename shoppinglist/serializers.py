@@ -20,11 +20,16 @@ class ShoppingListItemSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 class ShoppingListSerializer(serializers.ModelSerializer):
-    items = ShoppingListItemSerializer(many=True)  
-    
+    items = serializers.SerializerMethodField()
+
     class Meta:
         model = ShoppingList
         fields = ('id', 'owner', 'title', 'created_at', 'updated_at', 'items')
+
+    def get_items(self, obj):
+        shopping_list_items = ShoppingListItem.objects.filter(shopping_list=obj)
+        serializer = ShoppingListItemSerializer(shopping_list_items, many=True)
+        return serializer.data
 
     def create(self, validated_data):
         items_data = validated_data.pop('items')
