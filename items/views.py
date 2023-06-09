@@ -12,6 +12,10 @@ class ItemListView(generics.ListCreateAPIView):
     serializer_class = ItemSerializer
     permission_classes = [IsOwnerOrReadOnly]
     
+    def get_queryset(self):
+        user = self.request.user
+        return Item.objects.filter(owner=user)
+    
     def perform_create(self, serializer):
         """Save the owner of the item as the current user."""
         serializer.save(owner=self.request.user)
@@ -22,3 +26,7 @@ class ItemDetailedView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Item.objects.all()
     serializer_class =ItemDetailSerializer
     permission_classes =[IsOwnerOrReadOnly]
+
+    def get_queryset(self):
+        user = self.request.user
+        return Item.objects.filter(owner=user)
