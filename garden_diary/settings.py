@@ -102,7 +102,7 @@ INSTALLED_APPS = [
     'followers',
     'tasks',
     'plants',
-    'shoppinglist',
+    'items',
 ]
 
 SITE_ID = 1
