@@ -1,4 +1,5 @@
 from rest_framework import serializers
+<<<<<<< HEAD
 from .models import ShoppingList, Item, ShoppingListItem
 
 class ItemSerializer(serializers.ModelSerializer):
@@ -21,8 +22,13 @@ class ShoppingListItemSerializer(serializers.ModelSerializer):
 
 class ShoppingListSerializer(serializers.ModelSerializer):
     items = serializers.SerializerMethodField()
+=======
+from .models import Item
+>>>>>>> dcc3008 (Rework shoppinglist app, decided to make the lists based on individual items instead for simplicity)
 
+class ItemSerializer(serializers.ModelSerializer):
     class Meta:
+<<<<<<< HEAD
         model = ShoppingList
         fields = ('id', 'owner', 'title', 'created_at', 'updated_at', 'items')
 
@@ -45,8 +51,15 @@ class ShoppingListSerializer(serializers.ModelSerializer):
 
 class ShoppingListDetailedSerializer(serializers.ModelSerializer):
     items = serializers.SerializerMethodField()
+=======
+        model = Item
+        fields = '__all__'
+>>>>>>> dcc3008 (Rework shoppinglist app, decided to make the lists based on individual items instead for simplicity)
 
+class ItemDetailSerializer(serializers.ModelSerializer):
+    
     class Meta:
+<<<<<<< HEAD
         model = ShoppingList
         fields = ('id', 'owner', 'title', 'created_at', 'updated_at', 'items')
 
@@ -57,3 +70,7 @@ class ShoppingListDetailedSerializer(serializers.ModelSerializer):
 
 
 
+=======
+        model = Item
+        fields = '__all__'
+>>>>>>> dcc3008 (Rework shoppinglist app, decided to make the lists based on individual items instead for simplicity)
