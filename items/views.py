@@ -15,15 +15,10 @@ class ItemListView(generics.ListCreateAPIView):
     def get_queryset(self):
         user = self.request.user
         return Item.objects.filter(owner=user)
-    
+
     def perform_create(self, serializer):
         """Save the owner of the item as the current user."""
-        items = self.request.data.getlist('items')
-    
-        for item_data in items:
-            name = item_data.get('name')
-            quantity = item_data.get('quantity')
-            serializer.save(owner=self.request.user, name=name, quantity=quantity)
+        serializer.save(owner=self.request.user)
 
 
 class ItemDetailedView(generics.RetrieveUpdateDestroyAPIView):
