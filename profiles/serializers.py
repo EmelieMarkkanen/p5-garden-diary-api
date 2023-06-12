@@ -24,6 +24,14 @@ class ProfileSerializer(serializers.ModelSerializer):
             # print(following)
             return following.id if following else None
         return None
+    
+    def create(self, validated_data):
+        image = validated_data.pop('image', None)
+        profile = Profile.objects.create(**validated_data)
+        if image:
+            profile.image = image
+            profile.save()
+        return profile
 
     class Meta:
         model = Profile
