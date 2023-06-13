@@ -3,6 +3,7 @@ from garden_diary.permissions import IsOwnerOrReadOnly
 from likes.models import Like
 from likes.serializers import LikeSerializer
 
+
 class LikeList(generics.ListCreateAPIView):
     """
     List likes or create a like if logged in.

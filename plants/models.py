@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Plants(models.Model):
-    """Model representing a plant, owner relates to the user model, used to 
+    """Model representing a plant, owner relates to the user model, used to
     associate each task with a specific user.
-    Model includes a list of plant type choices. 
+    Model includes a list of plant type choices.
     """
-    
+
     plant_type_choices = [
         ('unknown', 'Unknown'),
         ('berry_bush', 'Berry bush'),
@@ -27,7 +28,11 @@ class Plants(models.Model):
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    plant_type = models.CharField(max_length=255, choices=plant_type_choices, null=True, blank=True, default='unknown')
+    plant_type = models.CharField(
+        max_length=255,
+        choices=plant_type_choices,
+        null=True, blank=True,
+        default='unknown')
     planted_at = models.DateField(null=True, blank=True)
     care_instructions = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -3,10 +3,13 @@ from django.contrib.auth.models import User
 from datetime import date
 from .models import Plants
 
+
 class PlantsModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        user = User.objects.create_user(username='testuser', password='testpass')
+        user = User.objects.create_user(
+            username='testuser',
+            password='testpass')
         Plants.objects.create(
             owner=user,
             name='Rose',

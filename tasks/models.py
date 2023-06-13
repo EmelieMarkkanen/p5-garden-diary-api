@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db.models import F
 
+
 class Task(models.Model):
     """
-    Task model, owner relates to the user model, used to 
+    Task model, owner relates to the user model, used to
     associate each task with a specific user.
     Set created at and updated at date, task can be set as over due.
     """
@@ -19,6 +20,7 @@ class Task(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_upload_wck8zz', blank=True
     )
+
     class Meta:
         ordering = [F('due_date').asc(nulls_last=True)]
 
@@ -27,7 +29,7 @@ class Task(models.Model):
 
     def is_overdue(self):
         return self.due_date and self.due_date < timezone.now().date()
-    
+
     def save(self, *args, **kwargs):
         if not self.image:
             self.image = '../default_upload_wck8zz'
