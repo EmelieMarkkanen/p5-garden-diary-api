@@ -78,19 +78,12 @@ A superuser can log in through the Django adminsite to access the backend and ad
 Other user can access the API data through https://garden-diary-api.herokuapp.com/ and the corresponding url for each API endpoint. 
 
 - [Profiles](https://garden-diary-api.herokuapp.com/profiles/)
-
 - [Posts](https://garden-diary-api.herokuapp.com/posts/)
-
 - [Likes](https://garden-diary-api.herokuapp.com/likes/)
-
 - [Comments](https://garden-diary-api.herokuapp.com/comments/)
-
 - [Followers](https://garden-diary-api.herokuapp.com/followers/)
-
 - Plants: the plants data is only accessible to the owner of the plant post, and can be accessed through the frontend website.
-
 - Tasks: the task data is only accessible to the owner of the task post, and can be accessed through the frontend website.
-
 - Items: the item data is only accessible to the owner of the item post, and can be accessed through the frontend website.
 
 # Testing
