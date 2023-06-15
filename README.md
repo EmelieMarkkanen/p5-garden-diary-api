@@ -17,6 +17,7 @@
     - [Frameworks](#frameworks)
 - [Project management](#project-management)
     - [Github project board, user stories, issues and milestones](#github-project-board-user-stories-issues-and-milestones)
+- [Entity relationship diagram](#entity-relationship-diagram)
 - [Features](#features)
     - [Profiles](#profiles)
     - [Posts](#posts)
@@ -70,6 +71,10 @@ Garden Diaries was developed using an agile methodology, using Github issues and
 
 - [User stories](https://github.com/EmelieMarkkanen/p5-garden-diary-api/issues)
 - [Project board](https://github.com/users/EmelieMarkkanen/projects/6/views/1)
+
+# Entity relationship diagram
+
+[ERD for Garden diaries API](assets/PDF/ERD.pdf)
 
 # Features
 Garden diaries API consists of eight apps, with their own unique model, views, urls and serializers.
