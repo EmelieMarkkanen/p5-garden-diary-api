@@ -31,6 +31,7 @@
     - [Automated tests](#automated-tests)
     - [Manual testing](#manual-testing)
     - [PEP8 Python linter](#pep8-python-linter)
+    - [Coverage report](#coverage-report)
 - [Deployment](#deployment)
     - [Github & Gitpod](#github--gitpod)
     - [Create a Django rest framework project](#create-a-django-rest-framework-project)
@@ -111,6 +112,13 @@ I used the [Code Institute Python linter](https://pep8ci.herokuapp.com/#) to tes
 
 Results from linter can be found **[here](assets/Printscreens)**.
 
+## Coverage report
+Generated using Coverage.
+
+![Cov1](assets/Printscreens/Coverage1.jpg)
+![Cov2](assets/Printscreens/Coverage2.jpg)
+![Cov3](assets/Printscreens/Coverage3.jpg)
+
 # Deployment
 
 ## Github & Gitpod
@@ -157,3 +165,4 @@ I created a repository in Github, named it ´p5-garden-diary-api´, and used the
 - [Django packages](https://djangopackages.org/)
 - [Django snippets](https://djangosnippets.org/)
 - [Cloudinary](https://cloudinary.com/)
+- [Coverage](https://micropyramid.com/blog/check-test-coverage-in-django-code-with-coveralls)
